@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login & Menu Kompresor</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 260px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        input,
+        button {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        button {
+            background: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #slide2,
+        #slide3,
+        #slide4,
+        #slide5 {
+            display: none;
+        }
+
+        #slide3,
+        #slide4,
+        #slide5 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            padding: 20px;
+            overflow-y: auto;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SLIDE 1 : LOGIN -->
+    <div class="box" id="slide1">
+        <h3>Login</h3>
+        <input type="text" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <p id="pesan" style="color:red;"></p>
+    </div>
+
+    <!-- SLIDE 2 : MENU -->
+    <div class="box" id="slide2">
+        <h3>Menu Utama</h3>
+        <button onclick="bukaSlide3()">Cara Mengoperasikan Kompresor</button>
+        <button onclick="mintaPasswordjalurlistrik()">Jalur Listrik Nusa Solar</button>
+        <button onclick="komputernitrogen()">Pengoperasian Komputer Nitrogen</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <!-- SLIDE 3 : OPERASI -->
+    <div id="slide3">
+        <h1 style="text-align:center; color:blue;">Cara Mengoperasikan Kompresor</h1>
+        <iframe src="https://docs.google.com/presentation/d/1KTZyN4mSZcheqv6unh3-AeBnCHT6QD5l/embed" width="100%"
+            height="80%" allowfullscreen></iframe>
+        <button onclick="kembaliMenu()">⬅ Kembali ke Menu</button>
+    </div>
+
+    <!-- SLIDE 4 : Jalur Listrik NUSA -->
+    <div id="slide4">
+        <h1 style="text-align:center; color:green;">Listrik Nusa Solar Indonesia</h1>
+        <iframe src="https://docs.google.com/presentation/d/1oL7Pzygl2eeFXOJe5etBFP9gAzMCGhwk/embed" width="100%"
+            height="80%" allowfullscreen></iframe>
+        <button onclick="kembaliMenuDarijalurlistrik()">⬅ Kembali</button>
+    </div>
+    <!--slide 5 pengoperaasian komputer nitrogen-->
+    <div id="slide5">
+        <h1 style="text-decoration-color:yellow ;">Pengoperasian komputer nitrogen</h1>
+        <iframe src="https://docs.google.com/presentation/d/1N4RaokJKQ21aYsQTQV7yE3XTCpE4rdNg/embed" width="100%"
+            height="80%" allowfullscreen></iframe>
+        <button onclick="kembalimenupengoperasiankomputernitrogen">kembali</button>
+    </div>
+    <script>
+        function login() {
+            let emailBenar = "operator";
+            let passwordBenar = "1234";
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            if (email === emailBenar && password === passwordBenar) {
+                document.getElementById("slide1").style.display = "none";
+                document.getElementById("slide2").style.display = "block";
+            } else {
+                document.getElementById("pesan").innerText = "Email atau password salah!";
+            }
+        }
+
+        function bukaSlide3() {
+            document.getElementById("slide2").style.display = "none";
+            document.getElementById("slide3").style.display = "block";
+        }
+        function komputernitrogen() {
+            document.getElementById("slide2").style.display = "none";
+            document.getElementById("slide5").style.display = "block";
+
+
+        }
+
+        function mintaPasswordjalurlistrik() {
+            let passwordMaintenance = prompt("Masukkan password maintenance:");
+
+            if (passwordMaintenance === "9999") {
+                document.getElementById("slide2").style.display = "none";
+                document.getElementById("slide4").style.display = "block";
+            } else {
+                alert("Password maintenance salah!");
+            }
+        }
+
+        function kembaliMenu() {
+            document.getElementById("slide3").style.display = "none";
+            document.getElementById("slide2").style.display = "block";
+        }
+
+        function kembaliMenuDariMaintenance() {
+            document.getElementById("slide4").style.display = "none";
+            document.getElementById("slide2").style.display = "block";
+        }
+        function kembalimenupengoperasiankomputernitrogen() {
+            document.getElementById("slide5").style.display = "none";
+            document.getElementById("slide2").style.display = "block";
+
+        }
+
+        function logout() {
+            document.getElementById("slide2").style.display = "none";
+            document.getElementById("slide1").style.display = "block";
+        }
+    </script>
+
+</body>
+
+</html>
